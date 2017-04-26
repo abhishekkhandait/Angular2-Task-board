@@ -1,0 +1,12 @@
+<md-grid-list cols="4" style="margin-top:5px" gutterSize="45px">
+  <md-grid-tile class="board-list" 
+      *ngFor="let tile of tiles" 
+      [colspan]="tile.cols" 
+      [rowspan]="tile.rows" 
+      [style.background]="tile.color" dnd-droppable (onDropSuccess)="simpleDrop($event, tile.text)">
+      <md-grid-tile-header class="board-list-header">{{tile.text}}</md-grid-tile-header>
+      <div class="task-card"> 
+        <app-board-task-card  *ngFor="let task of tasks" [tileName]="tile.text" [task]="task"></app-board-task-card>
+      </div>
+  </md-grid-tile>
+</md-grid-list>

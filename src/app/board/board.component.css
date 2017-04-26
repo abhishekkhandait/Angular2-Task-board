@@ -1,0 +1,12 @@
+.nav-title{
+     color:orangered;
+}
+.board-list-header{
+   color: "white";
+   font-family: sans-serif;
+   border-bottom: 2px solid orangered;
+}
+.task-card{
+    margin: 10px;
+    width: 85%;
+}

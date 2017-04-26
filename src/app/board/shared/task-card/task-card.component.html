@@ -1,0 +1,7 @@
+<md-card style="margin-top: 10px" *ngIf="task.list == tileName"  dnd-draggable [dragEnabled]="true" [dragData]="task">
+    <md-card-header>
+        <md-card-title style="font-size:10px">Priority: {{task.priority}}</md-card-title>
+        <md-card-subtitle style="font-size:8px">Due date: {{ task.dueDate }}</md-card-subtitle>
+    </md-card-header>
+    {{task.name}}
+</md-card>

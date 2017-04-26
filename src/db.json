@@ -1,0 +1,44 @@
+{
+  "boards": [
+    {
+      "id": 1,
+      "title": "Board-1",
+      "author": "Abhishek"
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "name": "Create user stories",
+      "list": "Done",
+      "dueDate": "24/04/2017",
+      "priority": 6,
+      "boardId": 1,
+      "taskId": 1
+    },
+    {
+      "id": 2,
+      "name": "Visual Designing",
+      "list": "In-Progress",
+      "dueDate": "25/04/2017",
+      "priority": 2,
+      "boardId": 1
+    },
+    {
+      "id": 3,
+      "name": "Developement",
+      "list": "On-Hold",
+      "dueDate": "25/04/2017",
+      "priority": 3,
+      "boardId": 1
+    },
+    {
+      "id": 4,
+      "name": "SIT",
+      "list": "New",
+      "dueDate": "25/04/2017",
+      "priority": 4,
+      "boardId": 1
+    }
+  ]
+}
