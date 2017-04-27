@@ -13,8 +13,7 @@
       "list": "New",
       "dueDate": "24/04/2017",
       "priority": 1,
-      "boardId": 1,
-      "taskId": 1
+      "boardId": 1
     },
     {
       "id": 2,
@@ -26,7 +25,7 @@
     },
     {
       "id": 3,
-      "name": "Developement",
+      "name": "Development",
       "list": "On-Hold",
       "dueDate": "25/04/2017",
       "priority": 3,
@@ -39,6 +38,30 @@
       "dueDate": "25/04/2017",
       "priority": 4,
       "boardId": 1
+    },
+    {
+      "list": "New",
+      "name": "System Intergration Testing",
+      "dueDate": "26/04/2017",
+      "priority": 5,
+      "boardId": "1",
+      "id": 5
+    },
+    {
+      "list": "New",
+      "name": "Deployment",
+      "dueDate": "26/04/2017",
+      "priority": 6,
+      "boardId": "1",
+      "id": 6
+    },
+    {
+      "list": "In-Progress",
+      "name": "UAT",
+      "dueDate": "26/04/2017",
+      "priority": 10,
+      "boardId": "1",
+      "id": 7
     }
   ]
 }
