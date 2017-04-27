@@ -1,12 +1,23 @@
 .nav-title{
-     color:orangered;
+     color:white;
 }
 .board-list-header{
    color: "white";
    font-family: sans-serif;
-   border-bottom: 2px solid orangered;
+   border-bottom: 2px solid white;
 }
 .task-card{
     margin: 10px;
     width: 85%;
+}
+.list-header-text{
+    width:225px;
+}
+.board-label{
+    font-family: sans-serif;
+    font-size: 2em;
+    vertical-align: bottom;
+    color: gray;
+}
+.board-list{
 }
