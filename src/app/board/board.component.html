@@ -1,12 +1,29 @@
-<md-grid-list cols="4" style="margin-top:5px" gutterSize="45px">
-  <md-grid-tile class="board-list" 
-      *ngFor="let tile of tiles" 
-      [colspan]="tile.cols" 
-      [rowspan]="tile.rows" 
-      [style.background]="tile.color" dnd-droppable (onDropSuccess)="simpleDrop($event, tile.text)">
-      <md-grid-tile-header class="board-list-header">{{tile.text}}</md-grid-tile-header>
-      <div class="task-card"> 
-        <app-board-task-card  *ngFor="let task of tasks" [tileName]="tile.text" [task]="task"></app-board-task-card>
-      </div>
+<div style="margin:1em">
+  <label class="board-label">Things to Get Done</label>
+  <button md-raised-button (click)="addTask()" style="float:right">New Task</button>
+</div>
+<md-grid-list cols="4" style="margin:8px;" gutterSize="35px">
+  <md-grid-tile class="board-list" *ngFor="let tile of tiles" [colspan]="tile.cols" 
+      [rowspan]="tile.rows" [style.background]="tile.color"
+    dnd-droppable (onDropSuccess)="simpleDrop($event, tile.text)">
+    <md-grid-tile-header class="board-list-header" [style.background]="tile.titlecolor">
+      <span class="list-header-text">{{tile.text}}</span>
+      <button md-icon-button [mdMenuTriggerFor]="menu">
+        <md-icon>sort</md-icon>
+      </button>
+      <md-menu #menu="mdMenu">
+        <button md-menu-item (click)="SetSortOrder('dueDate')">
+          <md-icon style="color: black">update</md-icon>
+          <span>Due date</span>
+        </button>
+        <button md-menu-item (click)="SetSortOrder('priority')">
+          <md-icon style="color: red">priority_high</md-icon>
+          <span>Priority</span>
+        </button>
+      </md-menu>
+    </md-grid-tile-header>
+    <div class="task-card">
+      <app-board-task-card *ngFor="let task of tasks" [tileName]="tile.text" [task]="task"></app-board-task-card>
+    </div>
   </md-grid-tile>
 </md-grid-list>
