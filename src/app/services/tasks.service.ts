@@ -14,6 +14,7 @@ export class TasksService {
   // private instance variable to hold base url
   private baseUrl = 'http://localhost:3001/';
   private boardUrl = 'http://localhost:3001/boards/';
+  private taskUrl = 'http://localhost:3001/tasks/';
 
   getBoard(boardid: string): Observable<BoardModel> {
     let params: URLSearchParams = new URLSearchParams();
@@ -31,13 +32,10 @@ export class TasksService {
       .catch((error: any) => Observable.throw(error.json().error) || 'Server Error');
   }
 
-  updateTask(id: string, sourcelist: string, targetlist: string): Observable<TaskModel> {
-    let params: URLSearchParams = new URLSearchParams();
-    params.set('id', id);
-    params.set('list', sourcelist);
-    var url = this.boardUrl + id + '/tasks?boardId=' + id + '&list=' + sourcelist;
+  updateTask(id: string, targetlist: string): Observable<TaskModel> {
+    var url = this.taskUrl + id;
     console.log(url);
-    return this.http.patch(url, { "list": targetlist }, { search: params })
+    return this.http.patch(url, { "list": targetlist })
       .map((res: Response) => res.json)
       .catch((error: any) => Observable.throw(error.json().error) || 'Server Error');
   }
