@@ -1,5 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 html {
-    background-color: #181818;
-   font-family: sans-serif;
+    background-color:#f3f3f3;
+    font-size: .875em;
+    font-weight: 300;
+    font-family: inherit;
+}
+
+body{
+    margin: 0 !important;
+}
+
+h2{
+    text-align: center;
+    text-decoration: underline;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
