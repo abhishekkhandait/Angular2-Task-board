@@ -1,14 +1,13 @@
-<md-toolbar color="primary">
-    <span class="nav-title">Kanban-Board</span>
-    <md-toolbar-row>
-        <button md-button [mdMenuTriggerFor]="menu">BOARDS</button>
-        <md-menu #menu="mdMenu">
-            <button md-menu-item>Board-1</button>
-            <button md-menu-item>Board-2</button>
-        </md-menu>
-        <span class="nav-spacer"></span>
-        <md-input-container color="accent">
-            <input mdInput placeholder="Search Tasks" type="search">
-        </md-input-container>
-    </md-toolbar-row>
+<md-toolbar style="background-color:#32c787; height:4em">
+    <div class="button-row">
+        <button md-raised-button [mdMenuTriggerFor]="menu">BOARDS</button>
+    </div>
+    <md-menu #menu="mdMenu">
+        <button md-menu-item>Board-1</button>
+        <button md-menu-item>Board-2</button>
+    </md-menu>
+    <span class="nav-spacer"></span>
+    <md-input-container color="accent">
+        <input mdInput placeholder="Search Tasks" type="search">
+    </md-input-container>
 </md-toolbar>
