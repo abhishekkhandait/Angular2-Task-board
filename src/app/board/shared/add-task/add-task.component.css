@@ -6,3 +6,7 @@
 .example-full-width {
   width: 100%;
 }
+
+.example-full-width tr {
+  height: 100px;
+}
