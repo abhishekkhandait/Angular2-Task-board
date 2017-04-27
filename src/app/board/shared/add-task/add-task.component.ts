@@ -9,7 +9,7 @@ import {MdDialog, MdDialogRef} from '@angular/material';
 export class AddTaskComponent implements OnInit {
 
   constructor(public dialogRef: MdDialogRef<AddTaskComponent>) { }
-
+  
   ngOnInit() {
   }
 
