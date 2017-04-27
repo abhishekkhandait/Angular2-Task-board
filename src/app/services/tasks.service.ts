@@ -39,6 +39,20 @@ export class TasksService {
       .map((res: Response) => res.json)
       .catch((error: any) => Observable.throw(error.json().error) || 'Server Error');
   }
+
+  createTask(boardid:string, list: string, name: string, dueDate: string, priority: string){
+    console.log('post');
+    var url = this.boardUrl + boardid + '/tasks';
+    var taskobj = {
+      'list': list,
+      'name': name,
+      'dueDate': dueDate,
+      'priority': priority
+    }
+    this.http.post(url, JSON.stringify(taskobj))
+    .map((res: Response) => res.json)
+    .catch((error: any) => Observable.throw(error.json().error) || 'Server Error');
+  }
 }
 
 
