@@ -40,17 +40,22 @@ export class TasksService {
       .catch((error: any) => Observable.throw(error.json().error) || 'Server Error');
   }
 
-  createTask(boardid:string, list: string, name: string, dueDate: string, priority: string){
+  createTask(boardid:string, list: string, name: string, dueDate: string, priority: string): Observable<TaskModel>{
     console.log('post');
     var url = this.boardUrl + boardid + '/tasks';
     var taskobj = {
-      'list': list,
-      'name': name,
-      'dueDate': dueDate,
-      'priority': priority
+      "list": list,
+      "name": name,
+      "dueDate": dueDate,
+      "priority": priority
     }
-    this.http.post(url, JSON.stringify(taskobj))
-    .map((res: Response) => res.json)
+    console.log(taskobj);
+
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post(url, JSON.stringify(taskobj), options)
+    .map((res: Response) => console.log(res.json))
     .catch((error: any) => Observable.throw(error.json().error) || 'Server Error');
   }
 }
