@@ -7,6 +7,8 @@
    border-bottom: 2px solid white;
 }
 .task-card{
+    padding-top: 120px;
+    height: inherit;
     margin: 10px;
     width: 85%;
 }
@@ -19,5 +21,10 @@
     vertical-align: bottom;
     color: gray;
 }
-.board-list{
+.new-task{
+    border: 1px solid black;
+}
+input .datepicker__input {
+    width: 100px !important;
+    background-color: red !important;
 }
