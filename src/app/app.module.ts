@@ -11,7 +11,6 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './core/nav/nav.component';
 import { BoardComponent } from './board/board.component';
 import { TaskCardComponent } from './board/shared/task-card/task-card.component';
-import { AddTaskComponent } from './board/shared/add-task/add-task.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +18,6 @@ import { AddTaskComponent } from './board/shared/add-task/add-task.component';
     NavComponent,
     BoardComponent,
     TaskCardComponent,
-    AddTaskComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,10 +26,10 @@ import { AddTaskComponent } from './board/shared/add-task/add-task.component';
     MaterialModule.forRoot(),
     BrowserAnimationsModule,
     DndModule.forRoot(),
-    DatepickerModule,
+    DatepickerModule
   ],
   exports: [DndModule],
   providers: [],
-  bootstrap: [AppComponent, AddTaskComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
