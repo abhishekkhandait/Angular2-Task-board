@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AddTaskComponent } from '../board/shared/add-task/add-task.component';
+import * as Moment from 'moment';
+
 import { TasksService } from '../services/tasks.service';
 import { BoardModel } from '../models/board-model';
 import { TaskModel } from '../models/task-model';
@@ -16,6 +17,20 @@ export class BoardComponent implements OnInit {
   board: BoardModel;
   tasks: TaskModel[];
   updatedTask: TaskModel;
+  newTask: TaskModel;
+  data: any = {
+    'description': '',
+    'duedate': '',
+    'priority': '',
+    'list': ''
+  }
+  public tiles = [
+    { text: 'New', cols: 1, rows: 1.75, color: '#CFD8DC', titlecolor: '#03A9F4', add: false, tasks:'' },
+    { text: 'On-Hold', cols: 1, rows: 1.75, color: '#CFD8DC', titlecolor: '#f5c942', add: false, tasks: '' },
+    { text: 'In-Progress', cols: 1, rows: 1.75, color: '#CFD8DC', titlecolor: '#d066e2', add: false, tasks: '' },
+    { text: 'Done', cols: 1, rows: 1.75, color: '#CFD8DC', titlecolor: '#ff6b68', add: false, tasks: '' },
+  ];
+  
   @Input() boardid: string;
 
   constructor(
@@ -26,16 +41,10 @@ export class BoardComponent implements OnInit {
   ngOnInit() {
     this.getBoardInfo();
     this.getTasks();
+    //this.setTaskstoTiles();
     this.SetSortOrder('priority');
   }
-
-  tiles = [
-    { text: 'New', cols: 1, rows: 1.75, color: '#CFD8DC', titlecolor: '#03A9F4' },
-    { text: 'On-Hold', cols: 1, rows: 1.75, color: '#CFD8DC', titlecolor: '#f5c942' },
-    { text: 'In-Progress', cols: 1, rows: 1.75, color: '#CFD8DC', titlecolor: '#d066e2' },
-    { text: 'Done', cols: 1, rows: 1.75, color: '#CFD8DC', titlecolor: '#ff6b68' },
-  ];
-
+  
   sortOrder: string;
 
   simpleDrop($event: any, tileText: string) {
@@ -53,12 +62,21 @@ export class BoardComponent implements OnInit {
       });
   }
 
-  getTasks(){
+  getTasks() {
     this.tasksService.getTasks('1')
     .subscribe(
       tasks => this.tasks = tasks,
       err => {
         console.log(err);
+      });
+  }
+
+  setTaskstoTiles() {
+    console.log(this.tasks);
+    this.tiles.filter(function(tile){
+        tile.tasks = this.tasks.filter(function(task){
+          return task.list === tile.text;
+        });
       });
   }
 
@@ -75,10 +93,33 @@ export class BoardComponent implements OnInit {
     this.sortOrder = sortBy;
   }
 
-  addTask(){
-    let newTaskBox = this.dialog.open(AddTaskComponent);
-    newTaskBox.afterClosed().subscribe(result => {
-      this.boardid = result;
+  showAddtask(_tiletext){
+    this.tiles.filter(function(tile){
+      if(tile.text === _tiletext){
+        tile.add = !tile.add; 
+      }
     });
-    }
+  }
+
+  addNewTask(_tiletext){
+    console.log(this.data);
+    this.tasksService.createTask('1', _tiletext, this.data.description, Moment(this.data.duedate).format("DD/MM/YYYY"), this.data.priority)
+    .subscribe(newtask => this.newTask = newtask,
+      err => {
+        console.log(err);
+      });
+    this.showAddtask(_tiletext);
+  }
+
+  sortByPriority(_tiletext){
+    this.tasks.sort(function(a, b){
+         return a.priority - b.priority;
+    });
+  }
+
+  sortByDate(_tiletext){
+    this.tasks.sort(function(a, b){
+          return +new Date(a.dueDate) - +new Date(b.dueDate);
+    });
+  }
 }

@@ -1,29 +1,56 @@
 <div style="margin:1em">
   <label class="board-label">Things to Get Done</label>
-  <button md-raised-button (click)="addTask()" style="float:right">New Task</button>
+  <button md-raised-button style="float:right">New Task</button>
 </div>
 <md-grid-list cols="4" style="margin:8px;" gutterSize="35px">
-  <md-grid-tile class="board-list" *ngFor="let tile of tiles" [colspan]="tile.cols" 
-      [rowspan]="tile.rows" [style.background]="tile.color"
+  <md-grid-tile class="board-list" *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows" [style.background]="tile.color"
     dnd-droppable (onDropSuccess)="simpleDrop($event, tile.text)">
     <md-grid-tile-header class="board-list-header" [style.background]="tile.titlecolor">
       <span class="list-header-text">{{tile.text}}</span>
-      <button md-icon-button [mdMenuTriggerFor]="menu">
+      <button md-icon-button [mdMenuTriggerFor]="menu" mdTooltip="Sort">
         <md-icon>sort</md-icon>
       </button>
+      <button md-icon-button mdTooltip="Add new task" (click)="showAddtask(tile.text)" *ngIf="tile.text !== 'Done'">
+        <md-icon *ngIf="tile.add === false">add</md-icon>
+        <md-icon *ngIf="tile.add === true">remove</md-icon>
+      </button>
       <md-menu #menu="mdMenu">
-        <button md-menu-item (click)="SetSortOrder('dueDate')">
+        <button md-menu-item (click)="sortByDate(tile.text)">
           <md-icon style="color: black">update</md-icon>
           <span>Due date</span>
         </button>
-        <button md-menu-item (click)="SetSortOrder('priority')">
+        <button md-menu-item (click)="sortByPriority(tile.text)">
           <md-icon style="color: red">priority_high</md-icon>
           <span>Priority</span>
         </button>
       </md-menu>
     </md-grid-tile-header>
     <div class="task-card">
+      <div class="new-task-card">
+        <table style="border: 1px solid black" *ngIf="tile.add === true">
+          <tr>
+            <md-input-container class="example-full-width">
+              <input mdInput placeholder="Description" name="description" [(ngModel)]="data.description" required />
+            </md-input-container>
+          </tr>
+          <tr>
+            <td>
+              <material-datepicker id="_duedate" placeholder="Due Date" [(date)]="data.duedate" name="duedate" dateFormat="DD-MM-YYYY" required></material-datepicker>
+            </td>
+            <td>
+              <md-input-container style="width: 75px">
+                <input mdInput placeholder="Priority" type="number" name="priority" [(ngModel)]="data.priority" required>
+              </md-input-container>
+            </td>
+          </tr>
+          <tr>
+            <button md-raised-button (click)="addNewTask(tile.text)">Create</button>
+          </tr>
+        </table>
+      </div>
       <app-board-task-card *ngFor="let task of tasks" [tileName]="tile.text" [task]="task"></app-board-task-card>
     </div>
   </md-grid-tile>
 </md-grid-list>
+
+<!-- New task window -->
