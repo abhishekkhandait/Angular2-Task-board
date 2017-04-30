@@ -1,4 +1,4 @@
-<md-card class="card" *ngIf="task.list == tileName"  dnd-draggable [dragEnabled]="true" [dragData]="task">
+<md-card [@flyInOut]="'in'" class="card" *ngIf="task.list == tileName"  dnd-draggable [dragEnabled]="true" [dragData]="task">
     <md-card-header>
         <md-card-title style="font-size:12px">Priority: {{task.priority}}</md-card-title>
         <md-card-subtitle style="font-size:12px">Due date: {{ task.dueDate }}</md-card-subtitle>
