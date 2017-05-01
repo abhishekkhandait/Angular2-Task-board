@@ -6,6 +6,7 @@ import { MaterialModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DndModule } from 'ng2-dnd'; 
 import { DatepickerModule } from 'angular2-material-datepicker';
+import { Ng2FilterPipeModule } from 'ng2-filter-pipe'; 
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './core/nav/nav.component';
@@ -28,7 +29,8 @@ import { ContentComponent } from './core/content/content.component';
     MaterialModule.forRoot(),
     BrowserAnimationsModule,
     DndModule.forRoot(),
-    DatepickerModule
+    DatepickerModule,
+    Ng2FilterPipeModule,
   ],
   exports: [DndModule],
   providers: [],
