@@ -16,6 +16,7 @@ export class BoardComponent implements OnInit {
   // Local Properties
   board: BoardModel;
   tasks: TaskModel[];
+  taskFilter: any = { name: '' };
   updatedTask: TaskModel;
   newTask: TaskModel;
   animateFlag = 'in';
