@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './core/nav/nav.component';
 import { BoardComponent } from './board/board.component';
 import { TaskCardComponent } from './board/shared/task-card/task-card.component';
+import { ContentComponent } from './core/content/content.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { TaskCardComponent } from './board/shared/task-card/task-card.component'
     NavComponent,
     BoardComponent,
     TaskCardComponent,
+    ContentComponent,
   ],
   imports: [
     BrowserModule,

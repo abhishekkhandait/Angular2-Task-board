@@ -1,0 +1,18 @@
+.content{
+    width: 100%;
+    height:100%;
+    position: fixed;
+}
+
+.board-tabs{
+    height: 100%;
+    overflow-y:scroll;
+}
+
+
+.mat-tab-list{
+    background-color: rgba(25, 199, 124, 0.83) !important;
+}
+md-tab-body{
+    background-color: white !important;
+}
