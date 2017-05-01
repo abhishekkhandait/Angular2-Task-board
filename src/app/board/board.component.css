@@ -21,10 +21,9 @@
     vertical-align: bottom;
     color: gray;
 }
-.new-task{
-    border: 1px solid black;
-}
-input .datepicker__input {
-    width: 100px !important;
-    background-color: red !important;
+.error{
+    padding-left: 1px;
+    color: red;
+    font-size: 11px;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
 }
