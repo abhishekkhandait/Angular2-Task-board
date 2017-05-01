@@ -4,6 +4,11 @@
       "id": 1,
       "title": "Board-1",
       "author": "Abhishek"
+    },
+    {
+      "id": 2,
+      "title": "Board-2",
+      "author": "Monika"
     }
   ],
   "tasks": [
@@ -18,7 +23,7 @@
     {
       "id": 2,
       "name": "Visual Designing",
-      "list": "On-Hold",
+      "list": "In-Progress",
       "dueDate": "25/04/2017",
       "priority": 2,
       "boardId": 1
@@ -26,7 +31,7 @@
     {
       "id": 3,
       "name": "Development",
-      "list": "On-Hold",
+      "list": "In-Progress",
       "dueDate": "25/04/2017",
       "priority": 3,
       "boardId": 1
@@ -34,7 +39,7 @@
     {
       "id": 4,
       "name": "SIT",
-      "list": "On-Hold",
+      "list": "New",
       "dueDate": "25/04/2017",
       "priority": 4,
       "boardId": 1
@@ -56,12 +61,28 @@
       "id": 6
     },
     {
-      "list": "In-Progress",
+      "list": "New",
       "name": "UAT",
       "dueDate": "26/04/2017",
       "priority": 10,
       "boardId": "1",
       "id": 7
+    },
+    {
+      "list": "New",
+      "name": "UAT",
+      "dueDate": "26/04/2017",
+      "priority": 10,
+      "boardId": "2",
+      "id": 1
+    },
+    {
+      "list": "In-Progress",
+      "name": "SIT",
+      "dueDate": "26/04/2017",
+      "priority": 10,
+      "boardId": "2",
+      "id": 2
     }
   ]
 }
