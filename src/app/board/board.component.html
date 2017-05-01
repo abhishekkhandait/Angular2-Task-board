@@ -1,5 +1,8 @@
 <div style="margin:1em">
   <label class="board-label">Things to Get Done</label>
+  <md-input-container style="float:right">
+    <input mdInput placeholder="Search Tasks" type="search" [(ngModel)]="taskFilter.name">
+  </md-input-container>
 </div>
 <md-grid-list cols="4" style="margin:8px;" gutterSize="35px">
   <md-grid-tile class="board-list" *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows" [style.background]="tile.color"
@@ -26,19 +29,19 @@
     </md-grid-tile-header>
     <div class="task-card">
       <div class="new-task-card" *ngIf="tile.add === true">
-        <form #newTaskForm = "ngForm">
-        <md-input-container style="width: 75px">
-          <input mdInput placeholder="Priority" type="number" name="priority"[(ngModel)]="data.priority" min=1 max=50 required>
-        </md-input-container>
-        <material-datepicker class="duedate" placeholder="Due Date" [(date)]="data.duedate" name="duedate" dateFormat="DD-MM-YYYY"></material-datepicker>
-        <div class="error" [hidden]="data.duedate !== ''">Due date required</div>
-        <md-input-container class="example-full-width">
-          <input mdInput placeholder="Description" name="description" [(ngModel)]="data.description" maxlength="75" required/>
-        </md-input-container>
-        <button md-raised-button [disabled]="!newTaskForm.form.valid" (click)="addNewTask(tile.text)">Create</button>
+        <form #newTaskForm="ngForm">
+          <md-input-container style="width: 75px">
+            <input mdInput placeholder="Priority" type="number" name="priority" [(ngModel)]="data.priority" min=1 max=50 required>
+          </md-input-container>
+          <material-datepicker class="duedate" placeholder="Due Date" [(date)]="data.duedate" name="duedate" dateFormat="DD-MM-YYYY"></material-datepicker>
+          <div class="error" [hidden]="data.duedate !== ''">Due date required</div>
+          <md-input-container class="example-full-width">
+            <input mdInput placeholder="Description" name="description" [(ngModel)]="data.description" maxlength="75" required/>
+          </md-input-container>
+          <button md-raised-button [disabled]="!newTaskForm.form.valid" (click)="addNewTask(tile.text)">Create</button>
         </form>
       </div>
-      <app-board-task-card *ngFor="let task of tasks" [tileName]="tile.text" [task]="task"></app-board-task-card>
+      <app-board-task-card *ngFor="let task of tasks | filterBy: taskFilter" [tileName]="tile.text" [task]="task"></app-board-task-card>
     </div>
   </md-grid-tile>
 </md-grid-list>
