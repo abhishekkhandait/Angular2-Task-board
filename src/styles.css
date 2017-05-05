@@ -13,7 +13,7 @@ body{
 h2{
     text-align: center;
     text-decoration: underline;
-    font-family: Roboto,"Helvetica Neue",sans-serif
+    font-family: Roboto,"Helvetica Neue",sans-serif;
 }
 
 .loader {
@@ -28,11 +28,19 @@ h2{
     -webkit-animation: spin 2s linear infinite;
     animation: spin 2s linear infinite;
 }
+
 @-webkit-keyframes spin {
   0% { -webkit-transform: rotate(0deg); }
   100% { -webkit-transform: rotate(360deg); }
 }
+
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.mat-tab-label{
+  min-width: 10px !important;
+  padding: 0 15px;
+  margin: 0 8px;
 }
