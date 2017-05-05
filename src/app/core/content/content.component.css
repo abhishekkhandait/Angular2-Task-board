@@ -8,8 +8,10 @@
     height: 100%;
     overflow-y:scroll;
 }
-
-
+.board-title{
+    margin: 0 20px;
+    font-size: 15px;
+}
 .mat-tab-list{
     background-color: rgba(25, 199, 124, 0.83) !important;
 }
