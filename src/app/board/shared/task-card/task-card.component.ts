@@ -1,4 +1,6 @@
-import { Component, OnInit, Input, trigger, state, animate, keyframes, style, transition } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { trigger, state, animate, keyframes, style, transition } from '@angular/animations';
+import { TaskModel } from '../../../models/task-model';
 
 @Component({
   selector: 'app-board-task-card',
@@ -17,13 +19,7 @@ import { Component, OnInit, Input, trigger, state, animate, keyframes, style, tr
   ])
 ]
 })
-export class TaskCardComponent implements OnInit {
-  @Input() task;
-  @Input() tileName;
-  constructor() { }
-  
-  ngOnInit() {
-  }
-  
-
+export class TaskCardComponent {
+  @Input() task: TaskModel;
+  @Input() tileName: string;
 }
