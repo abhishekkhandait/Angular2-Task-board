@@ -26,7 +26,7 @@ import { ContentComponent } from './core/content/content.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
     BrowserAnimationsModule,
     DndModule.forRoot(),
     DatepickerModule,
