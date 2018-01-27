@@ -2,11 +2,24 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MaterialModule } from '@angular/material';
+import {
+  MatDialogModule,
+  MatGridListModule,
+  MatMenuModule,
+  MatButtonModule,
+  MatTooltipModule,
+  MatIconModule,
+  MatCardModule,
+  MatToolbarModule,
+  MatTabsModule,
+  MatInputModule,
+  MatDatepickerModule,
+  MatNativeDateModule
+} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DndModule } from 'ng2-dnd'; 
+import { DndModule } from 'ng2-dnd';
 import { DatepickerModule } from 'angular2-material-datepicker';
-import { Ng2FilterPipeModule } from 'ng2-filter-pipe'; 
+import { Ng2FilterPipeModule } from 'ng2-filter-pipe';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './core/nav/nav.component';
@@ -26,7 +39,18 @@ import { ContentComponent } from './core/content/content.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterialModule,
+    MatDialogModule,
+    MatGridListModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatTooltipModule,
+    MatIconModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatTabsModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     BrowserAnimationsModule,
     DndModule.forRoot(),
     DatepickerModule,

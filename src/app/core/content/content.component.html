@@ -1,10 +1,10 @@
-<md-tab-group class="content">
-  <md-tab *ngFor="let board of boards" class="board-tabs">
-    <ng-template md-tab-label><span class="board-title">{{board.title}}</span></ng-template>
+<mat-tab-group class="content">
+  <mat-tab *ngFor="let board of boards" class="board-tabs">
+    <ng-template mat-tab-label><span class="board-title">{{board.title}}</span></ng-template>
     <app-board [boardid]="board.id"> Loading...</app-board>
-  </md-tab>
-  <md-tab>
-    <ng-template md-tab-label><span style="font-size: 25px">&#43;</span></ng-template>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label><span style="font-size: 25px">&#43;</span></ng-template>
     Abhishek
-  </md-tab>
-</md-tab-group>
+  </mat-tab>
+</mat-tab-group>

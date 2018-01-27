@@ -15,6 +15,6 @@
 .mat-tab-list{
     background-color: rgba(25, 199, 124, 0.83) !important;
 }
-md-tab-body{
+mat-tab-body{
     background-color: white !important;
 }

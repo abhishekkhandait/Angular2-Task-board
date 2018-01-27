@@ -1,49 +1,54 @@
 <div style="margin:1em">
   <label class="board-label">Things to Get Done</label>
-  <md-input-container style="float:right">
-    <input mdInput placeholder="Search Tasks" type="search" [(ngModel)]="taskFilter.name">
-  </md-input-container>
+  <mat-form-field style="float:right">
+    <input matInput placeholder="Search Tasks" type="search" [(ngModel)]="taskFilter.name" />
+  </mat-form-field>
 </div>
-<md-grid-list cols="4" style="margin:8px;" gutterSize="35px">
-  <md-grid-tile class="board-list" *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows" [style.background]="tile.color"
+<mat-grid-list cols="4" style="margin:8px;" gutterSize="20px">
+  <mat-grid-tile class="board-list" *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows" [style.background]="tile.color"
     dnd-droppable (onDropSuccess)="simpleDrop($event, tile.text)">
-    <md-grid-tile-header class="board-list-header" [style.background]="tile.titlecolor">
+    <mat-grid-tile-header class="board-list-header" [style.background]="tile.titlecolor">
       <span class="list-header-text">{{tile.text}}</span>
-      <button md-icon-button [mdMenuTriggerFor]="menu" mdTooltip="Sort">
-        <md-icon>sort</md-icon>
+      <button mat-icon-button [matMenuTriggerFor]="menu" matTooltip="Sort">
+        <mat-icon>sort</mat-icon>
       </button>
-      <button md-icon-button mdTooltip="Add new task" (click)="showAddtask(tile.text)" *ngIf="tile.text !== 'Done'">
-        <md-icon *ngIf="tile.add === false">add</md-icon>
-        <md-icon *ngIf="tile.add === true">remove</md-icon>
+      <button mat-icon-button matTooltip="Add new task" (click)="showAddtask(tile.text)" *ngIf="tile.text !== 'Done'">
+        <mat-icon *ngIf="tile.add === false">add</mat-icon>
+        <mat-icon *ngIf="tile.add === true">remove</mat-icon>
       </button>
-      <md-menu #menu="mdMenu">
-        <button md-menu-item (click)="sortByDate(tile.text)">
-          <md-icon style="color: black">update</md-icon>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="sortByDate(tile.text)">
+          <mat-icon style="color: black">update</mat-icon>
           <span>Due date</span>
         </button>
-        <button md-menu-item (click)="sortByPriority(tile.text)">
-          <md-icon style="color: red">priority_high</md-icon>
+        <button mat-menu-item (click)="sortByPriority(tile.text)">
+          <mat-icon style="color: red">priority_high</mat-icon>
           <span>Priority</span>
         </button>
-      </md-menu>
-    </md-grid-tile-header>
+      </mat-menu>
+    </mat-grid-tile-header>
     <div class="task-card">
       <div class="new-task-card" *ngIf="tile.add === true">
         <form #newTaskForm="ngForm">
-          <md-input-container style="width: 75px">
-            <input mdInput placeholder="Priority" type="number" name="priority" [(ngModel)]="data.priority" min=1 max=50 required>
-          </md-input-container>
-          <material-datepicker class="duedate" placeholder="Due Date" [(date)]="data.duedate" name="duedate" dateFormat="DD-MM-YYYY"></material-datepicker>
+          <mat-form-field style="width: 75px">
+            <input matInput placeholder="Priority" type="number" name="priority" [(ngModel)]="data.priority" min=1 max=50 required />
+          </mat-form-field>
+          <!-- <material-datepicker class="duedate" placeholder="Due Date" [(date)]="data.duedate" name="duedate" dateFormat="DD-MM-YYYY"></material-datepicker> -->
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Due date" [(ngModel)]="data.duedate" name="duedate"/>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
           <div class="error" [hidden]="data.duedate !== ''">Due date required</div>
-          <md-input-container class="example-full-width">
-            <input mdInput placeholder="Description" name="description" [(ngModel)]="data.description" maxlength="75" required/>
-          </md-input-container>
-          <button md-raised-button [disabled]="!newTaskForm.form.valid" (click)="addNewTask(tile.text)">Create</button>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Description" name="description" [(ngModel)]="data.description" maxlength="75" required/>
+          </mat-form-field>
+          <button mat-raised-button [disabled]="!newTaskForm.form.valid" (click)="addNewTask(tile.text)">Create</button>
         </form>
       </div>
       <app-board-task-card *ngFor="let task of tasks | filterBy: taskFilter" [tileName]="tile.text" [task]="task"></app-board-task-card>
     </div>
-  </md-grid-tile>
-</md-grid-list>
+  </mat-grid-tile>
+</mat-grid-list>
 
 <!-- New task window -->

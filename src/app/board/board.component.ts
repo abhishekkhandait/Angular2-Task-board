@@ -4,7 +4,7 @@ import * as Moment from 'moment';
 import { TasksService } from '../services/tasks.service';
 import { BoardModel } from '../models/board-model';
 import { TaskModel } from '../models/task-model';
-import { MdDialog, MdDialogRef } from '@angular/material';
+import { MatDialog, MatDialogRef, MatDatepicker } from '@angular/material';
 
 @Component({
   selector: 'app-board',
@@ -37,7 +37,7 @@ export class BoardComponent implements OnInit {
 
   constructor(
     private tasksService: TasksService,
-    public dialog: MdDialog,
+    public dialog: MatDialog,
 
   ) { }
 
@@ -45,30 +45,33 @@ export class BoardComponent implements OnInit {
     this.getTasks(this.boardid);
   }
 
-
   simpleDrop($event: any, tileText: string) {
     if ($event.dragData.list !== tileText) {
-      this.UpdateTask($event.dragData.id, tileText);
+      this.UpdateTask($event.dragData.id, tileText, $event.dragData.boardId);
     }
   }
 
   getTasks(_boardid) {
     this.tasksService.getTasks(_boardid)
       .subscribe(
-      tasks => { this.tasks = tasks;
-      this.tiles.forEach(tile => {
-        tile.rows = tasks.length * 0.4;
-      });
+      tasks => {
+        this.tasks = tasks;
+        this.tiles.forEach(tile => {
+          tile.rows = tasks.length * 0.4;
+        });
       },
       err => {
         console.log(err);
       });
   }
 
-  UpdateTask(id, tList) {
+  UpdateTask(id, tList, boardid) {
     this.tasksService.updateTask(id, tList)
       .subscribe(
-      updatedTask => this.updatedTask = updatedTask,
+      updatedTask => {
+        this.updatedTask = updatedTask;
+        this.getTasks(boardid);
+      },
       err => {
         console.log(err);
       });
@@ -78,13 +81,17 @@ export class BoardComponent implements OnInit {
   showAddtask(_tiletext) {
     this.clearForm();
     this.tiles.filter(function (tile) {
-      tile.text === _tiletext ? tile.add = !tile.add : tile.add = false;
+      tile.add = tile.text === _tiletext ? !tile.add : false;
     });
   }
 
   addNewTask(_tiletext) {
-    this.tasksService.createTask('1', _tiletext, this.data.description, Moment(this.data.duedate).format('DD/MM/YYYY'), this.data.priority)
-      .subscribe(newtask => this.newTask = newtask,
+    this.tasksService.createTask(this.boardid, _tiletext, this.data.description,
+      Moment(this.data.duedate).format('DD/MM/YYYY'), this.data.priority)
+      .subscribe(newtask => {
+        this.newTask = newtask;
+        this.getTasks(this.boardid);
+      },
       err => {
         console.log(err);
       });
