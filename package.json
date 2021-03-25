@@ -37,7 +37,7 @@
     "ng2-filter-pipe": "^0.1.8",
     "rxjs": "^6.5.1",
     "zone.js": "^0.9.1",
-    "snyk": "^1.360.0"
+    "snyk": "^1.465.0"
   },
   "devDependencies": {
     "@angular/cli": "^7.3.8",
